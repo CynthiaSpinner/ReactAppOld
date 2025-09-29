@@ -1,5 +1,6 @@
 import React from 'react'; //didnt mention to do this
 import './App.css';
+import FilmList from './components/filmList';
 
 class App extends React.Component { //functions are just as powerful as classes now
   constructor(props) { 
@@ -34,6 +35,7 @@ class App extends React.Component { //functions are just as powerful as classes 
             <li key={index}>{item}</li>
           ))}
         </ul>
+        <FilmList/>
       </div>
     );
   }
