@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import FilmList from './filmList';
+import { Link } from 'react-router-dom';
+import FilmList from '../components/filmList';
 import { filterFilmsByDirector, getListOf } from '../helpers/filmHelpers';
 
 function FilmsPage() {
@@ -48,7 +49,15 @@ function FilmsPage() {
                     </select>
                 </div>
             </form>
-            <FilmList films={filmsByDirector} />
+           <ul>
+             {filmsByDirector.map(film => (
+                <li key={film.id}>
+                    <Link to={`/film/${film.id}`}>
+                        {film.title}
+                    </Link>
+                </li>
+             ))}
+           </ul>
         </div>
     );
 }

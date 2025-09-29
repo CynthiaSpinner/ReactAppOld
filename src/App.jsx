@@ -1,10 +1,9 @@
 import React from 'react';
 import { BrowserRouter, NavLink, Routes, Route } from 'react-router-dom';
-import HomePage from './components/HomePage';
-import FilmsPage from './components/FilmsPage';
+import HomePage from './pages/HomePage';
+import FilmsPage from './pages/FilmsPage';
+import SingleFilmPage from './pages/SingleFilmPage';
 import './App.css';
-
-
 
 function App() {
   return (
@@ -22,6 +21,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/films" element={<FilmsPage />} />
+        <Route path="/film/:id" element={<SingleFilmPage />} />
       </Routes>
     </BrowserRouter>
   );
