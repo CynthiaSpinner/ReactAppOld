@@ -5,20 +5,18 @@ function SingleFilmPage() {
     const [item, setItem] = useState({});
     const { id } = useParams();
 
-    const getFilm = () => {
+    // Yes, it is professional and common practice to define the data-fetching logic directly inside the useEffect,
+    // especially when the logic is only used in that effect. This keeps the code concise and localized.
+    useEffect(() => {
         fetch(`https://studioghibliapi-d6fc8.web.app/films/${id}`)
             .then(response => response.json())
             .then(result => {
-            setItem(result);
+                setItem(result);
             })
             .catch(error => {
                 console.error('Error fetching film:', error);
             });
-    };
-
-    useEffect(() => {
-        getFilm();
-    }, []);
+    }, [id]);
 
     return (
         <div>
@@ -34,7 +32,7 @@ function SingleFilmPage() {
                     The film was released in <strong>{item.release_date}</strong> and gernered
                     a <strong>{item.rt_score}</strong> aggregate score on{" "}
                     <a
-                        heref="https://www.rottentomatoes.com/"
+                        href="https://www.rottentomatoes.com/"
                         target="_blank"
                         rel="noreferrer"
                     >

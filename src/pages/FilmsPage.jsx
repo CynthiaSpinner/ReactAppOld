@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import FilmList from '../components/filmList';
-import { filterFilmsByDirector, getListOf } from '../helpers/filmHelpers';
+import { filterFilmsByDirector, getListOf, getFilmStats } from '../helpers/filmHelpers';
 
 function FilmsPage() {
     const[searchDirector, setSearchDirector] = useState("");
@@ -9,7 +8,7 @@ function FilmsPage() {
 
     //moved data fetching here from filmlist.jsx
     useEffect(() => {
-        const getFIlms = () => {
+        const getFilms = () => {
             fetch('https://studioghibliapi-d6fc8.web.app/films')
             .then(response => response.json())
             .then(result => {
@@ -20,7 +19,7 @@ function FilmsPage() {
             });
         };
 
-        getFIlms();
+        getFilms();
     }, []);
 
     //getting filtered films
@@ -28,6 +27,9 @@ function FilmsPage() {
 
     //getting unique directors
     const directors = getListOf(movieList, "director");
+
+    const stats = getFilmStats(filmsByDirector);
+    const { avg_score, total, latest } = stats;
 
     return (
         <div>
@@ -49,15 +51,31 @@ function FilmsPage() {
                     </select>
                 </div>
             </form>
-           <ul>
-             {filmsByDirector.map(film => (
-                <li key={film.id}>
-                    <Link to={`/film/${film.id}`}>
-                        {film.title}
-                    </Link>
-                </li>
-             ))}
-           </ul>
+
+            <div>
+                <div>
+                    <span># Of Films</span>
+                    <span>{total}</span>
+                </div>
+                <div>
+                    <span>Average Rating</span>
+                    <span>{avg_score.toFixed(2)}</span>
+                </div>
+                <div>
+                    <span>Latest Film</span>
+                    <span>{latest}</span>
+                </div>
+            </div>            
+
+            <ul>
+                {filmsByDirector.map(film => (
+                    <li key={film.id}>
+                        <Link to={`/film/${film.id}`}>
+                            {film.title}
+                        </Link>
+                    </li>
+                 ))}
+            </ul>
         </div>
     );
 }
