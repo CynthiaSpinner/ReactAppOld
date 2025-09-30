@@ -5,7 +5,8 @@ function SingleFilmPage() {
     const [item, setItem] = useState({});
     const { id } = useParams();
 
-    // Yes, it is professional and common practice to define the data-fetching logic directly inside the useEffect,
+    // removed getFilms and placed the fetch inside the useEffect: 
+    // its professional and common practice to define the data-fetching logic directly inside the useEffect,
     // especially when the logic is only used in that effect. This keeps the code concise and localized.
     useEffect(() => {
         fetch(`https://studioghibliapi-d6fc8.web.app/films/${id}`)
