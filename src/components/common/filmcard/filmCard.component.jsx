@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, Badge, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useWatchlist } from '../../../contexts/WatchlistContext';
-import './filmCard.css';
+import '../../../styles/filmCard.css';
 
 function FilmCard({ film, showAddButton = false, variant = 'default' }) {
   const { addToWatchlist, isInWatchlist } = useWatchlist();
