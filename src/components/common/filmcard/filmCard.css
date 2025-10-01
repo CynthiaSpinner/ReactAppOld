@@ -1,0 +1,187 @@
+/* FilmCard Component Styles */
+.film-card {
+  position: relative;
+  border: none;
+  overflow: visible;
+  transition: all var(--transition-normal);
+  height: 100%;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.film-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
+}
+
+.film-card__image-container {
+  position: relative;
+  overflow: hidden;
+  height: 600px !important;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  background: linear-gradient(135deg, var(--react-blue-ultra-light) 0%, var(--neutral-100) 100%);
+  flex-shrink: 0;
+}
+
+.film-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  transition: transform var(--transition-slow);
+}
+
+/* Override Bootstrap Card.Img styles */
+.film-card .card-img-top {
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center top !important;
+  border-radius: 0 !important;
+}
+
+/* Ensure the image container takes full height */
+.film-card .film-card__image-container {
+  height: 320px !important;
+  min-height: 320px;
+}
+
+.film-card:hover .film-card__image {
+  transform: scale(1.05);
+}
+
+.film-card__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.3) 0%,
+    rgba(0, 0, 0, 0.1) 50%,
+    rgba(0, 0, 0, 0.6) 100%
+  );
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 12px;
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+}
+
+.film-card:hover .film-card__overlay {
+  opacity: 1;
+}
+
+.film-card__score {
+  font-size: 0.875rem;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
+}
+
+.film-card__add-btn {
+  font-size: 0.75rem;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  transition: all var(--transition-fast);
+}
+
+.film-card__add-btn:hover:not(:disabled) {
+  transform: scale(1.05);
+}
+
+.film-card__add-btn:disabled {
+  opacity: 0.8;
+  cursor: not-allowed;
+}
+
+.film-card__body {
+  padding: 16px;
+  background: white;
+  flex: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between;
+}
+
+.film-card__title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+
+.film-card__link {
+  color: var(--tc-primary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.film-card__link:hover {
+  color: var(--react-blue);
+  text-decoration: none;
+}
+
+.film-card__details {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--neutral-600);
+  flex-grow: 1;
+}
+
+.film-card__director,
+.film-card__year {
+  display: flex;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.film-card__icon {
+  margin-right: 8px;
+  font-size: 0.8rem;
+}
+
+/* Variant Styles */
+.film-card--compact .film-card__image-container {
+  height: 200px;
+}
+
+.film-card--compact .film-card__body {
+  padding: 12px;
+}
+
+.film-card--compact .film-card__title {
+  font-size: 1rem;
+}
+
+.film-card--featured {
+  border: 2px solid var(--react-blue);
+}
+
+.film-card--featured .film-card__overlay {
+  background: linear-gradient(
+    to bottom,
+    rgba(97, 218, 251, 0.3) 0%,
+    rgba(97, 218, 251, 0.1) 50%,
+    rgba(97, 218, 251, 0.6) 100%
+  );
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .film-card__image-container {
+    height: 250px;
+  }
+  
+  .film-card__overlay {
+    opacity: 1; /* Always show on mobile */
+  }
+  
+  .film-card__add-btn {
+    font-size: 0.7rem;
+    padding: 4px 8px;
+  }
+}
