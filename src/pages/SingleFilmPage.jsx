@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { MainLayout, Loader } from '../components';
+import { useWatchlist } from '../contexts/WatchlistContext';
+import { Button, Alert } from 'react-bootstrap';
 
 function SingleFilmPage() {
     const [item, setItem] = useState({});
     const [isLoaded, setIsLoaded] = useState(false);
     const { id } = useParams();
+    const { addToWatchlist, isInWatchlist } = useWatchlist();
 
     // removed getFilms and placed the fetch inside the useEffect: 
     // its professional and common practice to define the data-fetching logic directly inside the useEffect,
@@ -22,6 +25,10 @@ function SingleFilmPage() {
                 setIsLoaded(true);
             });
     }, [id]);
+
+    const handleAddToWatchlist = () => {
+        addToWatchlist(item);
+    };
 
     if(!isLoaded) {
         return (
@@ -58,6 +65,23 @@ function SingleFilmPage() {
                         </a>
                         .
                     </p>
+                    
+                    <div className="mb-3">
+                        {isInWatchlist(item.id) ? (
+                            <Alert variant="success">
+                                ✓ Added to your watchlist!
+                            </Alert>
+                        ) : (
+                            <Button 
+                                variant="primary" 
+                                onClick={handleAddToWatchlist}
+                                className="me-2"
+                            >
+                                Add to Watchlist
+                            </Button>
+                        )}
+                    </div>
+                    
                     <h2>Description</h2>
                     <p>{item.description}</p>
                 </div>

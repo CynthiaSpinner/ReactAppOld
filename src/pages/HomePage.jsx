@@ -1,44 +1,57 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { MainLayout } from '../components';
-import { Form, Card, ListGroup, ListGroupItem } from 'react-bootstrap';
+import { Card, ListGroup, ListGroupItem, Button, Badge } from 'react-bootstrap';
+import { useWatchlist } from '../contexts/WatchlistContext';
+import { Link } from 'react-router-dom';
 
 function HomePage() {
-    const [list, setList] = useState([]);
-    const [text, setText] = useState("");
-    
-    const onSubmit = (e) => {
-        e.preventDefault();
-        setList([...list, text]);
-    };    
-    
-    return (
-        <MainLayout>
-            <Card>
-                <Card.Header>
-                    <h1 className="mb-0">Welcome to the home page</h1>
-                </Card.Header>
-                <Card.Body>
-                    <p className="text-muted">ToDo List</p>
+  const { watchlist, removeFromWatchlist } = useWatchlist();
+  
+  return (
+    <MainLayout>
+      <Card>
+        <Card.Header>
+          <h1 className="mb-0">My Movie Watchlist</h1>
+        </Card.Header>
+        <Card.Body>
+          <p className="text-muted">
+            {watchlist.length === 0 
+              ? "Your watchlist is empty. Add movies from the Films page!" 
+              : `${watchlist.length} movie${watchlist.length !== 1 ? 's' : ''} in your watchlist`
+            }
+          </p>
           
-                    <Form onSubmit={onSubmit} className="mb-3 d-flex gap-2">
-                        <Form.Control
-                            type="text"
-                            value={text}
-                            onChange={(e) => setText(e.target.value)}
-                            placeholder="Add Task"
-                        />
-                        <button type="submit" className="btn btn-primary">Add</button>
-                    </Form>
-          
-                    <ListGroup>
-                        {list.map((item, index) => (
-                            <ListGroupItem key={index}>{item}</ListGroupItem>
-                        ))}
-                    </ListGroup>
-                </Card.Body>
-            </Card>
-        </MainLayout>        
-    );
+          {watchlist.length > 0 && (
+            <ListGroup>
+              {watchlist.map((film) => (
+                <ListGroupItem key={film.id} className="d-flex justify-content-between align-items-center">
+                  <div>
+                    <Link to={`/film/${film.id}`} className="text-decoration-none">
+                      <strong>{film.title}</strong>
+                    </Link>
+                    <br />
+                    <small className="text-muted">Directed by {film.director}</small>
+                  </div>
+                  <div>
+                    <Badge bg="secondary" className="me-2">
+                      {film.rt_score}%
+                    </Badge>
+                    <Button 
+                      variant="outline-danger" 
+                      size="sm"
+                      onClick={() => removeFromWatchlist(film.id)}
+                    >
+                      Remove
+                    </Button>
+                  </div>
+                </ListGroupItem>
+              ))}
+            </ListGroup>
+          )}
+        </Card.Body>
+      </Card>
+    </MainLayout>
+  );
 }
 
 export default HomePage;
