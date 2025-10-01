@@ -1,4 +1,6 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
+import { MainLayout } from '../components';
+import { Form, Card, ListGroup, ListGroupItem } from 'react-bootstrap';
 
 function HomePage() {
     const [list, setList] = useState([]);
@@ -10,24 +12,32 @@ function HomePage() {
     };    
     
     return (
-        <div>
-            <h1>Welcome to the home page</h1>
-            <p>ToDo List</p>
-        
-            <form onSubmit={onSubmit}>
-                <input 
-                    value={text}
-                    onChange={(e) => setText(e.target.value)}
-                    placeholder="Add Task"
-                ></input>
-                <button type="submit">Add</button>
-            </form>
-            <ul>
-                {list.map((item, index) => (
-                    <li key={index}>{item}</li>
-                ))}
-            </ul>
-        </div>        
+        <MainLayout>
+            <Card>
+                <Card.Header>
+                    <h1 className="mb-0">Welcome to the home page</h1>
+                </Card.Header>
+                <Card.Body>
+                    <p className="text-muted">ToDo List</p>
+          
+                    <Form onSubmit={onSubmit} className="mb-3 d-flex gap-2">
+                        <Form.Control
+                            type="text"
+                            value={text}
+                            onChange={(e) => setText(e.target.value)}
+                            placeholder="Add Task"
+                        />
+                        <button type="submit" className="btn btn-primary">Add</button>
+                    </Form>
+          
+                    <ListGroup>
+                        {list.map((item, index) => (
+                            <ListGroupItem key={index}>{item}</ListGroupItem>
+                        ))}
+                    </ListGroup>
+                </Card.Body>
+            </Card>
+        </MainLayout>        
     );
 }
 
