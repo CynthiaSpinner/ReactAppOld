@@ -1,70 +1,177 @@
-# Getting Started with Create React App
+# Studio Ghibli Films App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern, responsive React application for exploring and managing your favorite Studio Ghibli films. Built with React, React Router, and Bootstrap, this app provides an immersive experience for discovering the magical world of Studio Ghibli movies.
 
-## Available Scripts
+## 🎬 Features
 
-In the project directory, you can run:
+### Film Discovery
+- **Browse Films**: Explore the complete collection of Studio Ghibli films
+- **Director Filtering**: Filter films by director (Hayao Miyazaki, Isao Takahata, etc.)
+- **Film Statistics**: View average ratings, total films, and latest releases
+- **Detailed Views**: Click any film to see comprehensive details including descriptions, ratings, and release information
 
-### `npm start`
+### Personal Watchlist
+- **Add to Watchlist**: Save your favorite films for later viewing
+- **Manage Collection**: Remove films from your watchlist
+- **Visual Indicators**: Clear status indicators for films already in your watchlist
+- **Persistent Storage**: Your watchlist persists across browser sessions
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Modern UI/UX
+- **Responsive Design**: Optimized for desktop, tablet, and mobile devices
+- **Smooth Animations**: Elegant fade-in and slide-up transitions
+- **Interactive Cards**: Hover effects and visual feedback
+- **Modern Typography**: Clean, readable fonts with proper hierarchy
+- **Color Palette**: Custom theme based on React blue and Studio Ghibli aesthetics
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🚀 Getting Started
 
-### `npm test`
+### Prerequisites
+- Node.js (version 14 or higher)
+- npm or yarn package manager
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Installation
 
-### `npm run build`
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd react-project
+   ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+3. **Start the development server**
+   ```bash
+   npm start
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+4. **Open your browser**
+   Navigate to [http://localhost:3000](http://localhost:3000) to view the application
 
-### `npm run eject`
+### Available Scripts
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- `npm start` - Runs the app in development mode
+- `npm test` - Launches the test runner
+- `npm run build` - Builds the app for production
+- `npm run eject` - Ejects from Create React App (one-way operation)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 🏗️ Project Structure
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```
+src/
+├── components/          # Reusable UI components
+│   ├── common/         # Shared components (Loader, FilmCard)
+│   ├── layout/         # Layout components (TopNav, MainLayout)
+│   └── index.js        # Component exports
+├── contexts/           # React Context providers
+│   └── WatchlistContext.jsx
+├── helpers/            # Utility functions
+│   └── filmHelpers.js
+├── pages/              # Page components
+│   ├── HomePage.jsx
+│   ├── FilmsPage.jsx
+│   └── SingleFilmPage.jsx
+├── styles/             # CSS files
+│   ├── global.css
+│   ├── filmCard.css
+│   └── loader.css
+└── utils/              # Utility files
+    └── reportWebVitals.js
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 🎨 Design System
 
-## Learn More
+### Color Palette
+- **Primary**: React Blue (#61DAFB) - Modern, tech-forward
+- **Secondary**: TrueCoders Dark (#2C3E50) - Professional, trustworthy
+- **Accent**: TrueCoders Red (#E74C3C) - Energetic, attention-grabbing
+- **Neutrals**: Carefully selected grays for text and backgrounds
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Typography
+- **Font Family**: System fonts for optimal performance
+- **Hierarchy**: Clear heading structure with proper sizing
+- **Readability**: Optimized line heights and spacing
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Components
+- **Modern Cards**: Rounded corners, subtle shadows, hover effects
+- **Interactive Buttons**: Gradient backgrounds, smooth transitions
+- **Responsive Grid**: Flexible layouts that adapt to screen size
+- **Loading States**: Elegant spinner animations
 
-### Code Splitting
+## 🧪 Testing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+The project includes comprehensive test coverage using Jest and React Testing Library:
 
-### Analyzing the Bundle Size
+- **Component Tests**: Individual component functionality
+- **Context Tests**: Watchlist state management
+- **Helper Tests**: Utility function validation
+- **Integration Tests**: User interaction flows
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Run tests with:
+```bash
+npm test
+```
 
-### Making a Progressive Web App
+## 🌐 API Integration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+The app integrates with the [Studio Ghibli API](https://studioghibliapi-d6fc8.web.app/) to fetch:
+- Complete film catalog
+- Individual film details
+- Director information
+- Release dates and ratings
 
-### Advanced Configuration
+## 📱 Responsive Design
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- **Mobile First**: Optimized for mobile devices
+- **Breakpoints**: Responsive design for all screen sizes
+- **Touch Friendly**: Large tap targets and intuitive gestures
+- **Performance**: Optimized images and lazy loading
 
-### Deployment
+## 🛠️ Technologies Used
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- **React 19** - Modern React with hooks
+- **React Router** - Client-side routing
+- **React Bootstrap** - UI component library
+- **CSS Custom Properties** - Modern CSS variables
+- **Jest & React Testing Library** - Testing framework
+- **Studio Ghibli API** - External data source
 
-### `npm run build` fails to minify
+## 🚀 Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The app is ready for deployment to any static hosting service:
+
+1. **Build for production**
+   ```bash
+   npm run build
+   ```
+
+2. **Deploy the `build` folder** to your preferred hosting service:
+   - Vercel
+   - Netlify
+   - GitHub Pages
+   - AWS S3
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- [Studio Ghibli](https://www.ghibli.jp/) for creating amazing films
+- [Studio Ghibli API](https://studioghibliapi-d6fc8.web.app/) for providing film data
+- [React](https://reactjs.org/) and [Bootstrap](https://getbootstrap.com/) communities
+- [TrueCoders](https://truecoders.io/) for inspiration and guidance
+
+---
+
+**Made with ❤️ and React**
