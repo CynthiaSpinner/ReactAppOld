@@ -1,23 +1,31 @@
+// imports react hooks and required components
 import React, { useState, useEffect } from 'react';
 import { filterFilmsByDirector, getListOf, getFilmStats } from '../helpers/filmHelpers';
 import { Form, Row, Col, Card, Container, Alert } from 'react-bootstrap';
 import { MainLayout, Loader, FilmCard } from '../components';
 
+// films page component that displays and filters studio ghibli films
 function FilmsPage() {
+    // state for director filter selection
     const [searchDirector, setSearchDirector] = useState("");
+    // state for storing fetched film data
     const [movieList, setMovieList] = useState("");
+    // state for tracking loading status
     const [isLoaded, setIsLoaded] = useState(false);
 
-    //moved data fetching here from filmlist.jsx
+    // fetches film data from studio ghibli api on component mount
     useEffect(() => {
+        // function to fetch films from external api
         const getFilms = () => {
             fetch('https://studioghibliapi-d6fc8.web.app/films')
             .then(response => response.json())
             .then(result => {
+                // updates state with fetched film data
                 setMovieList(result);
                 setIsLoaded(true);
             })
             .catch(error => {
+                // handles fetch errors and stops loading
                 console.error('Error fetching films:', error);
                 setIsLoaded(true);             
             });

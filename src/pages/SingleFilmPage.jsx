@@ -1,13 +1,19 @@
+// imports react hooks and required components
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { MainLayout, Loader } from '../components';
 import { useWatchlist } from '../contexts/WatchlistContext';
 import { Button, Alert, Card, Container, Row, Col, Badge } from 'react-bootstrap';
 
+// single film page component that displays detailed film information
 function SingleFilmPage() {
+    // state for storing individual film data
     const [item, setItem] = useState({});
+    // state for tracking loading status
     const [isLoaded, setIsLoaded] = useState(false);
+    // gets film id from url parameters
     const { id } = useParams();
+    // gets watchlist functions from context
     const { addToWatchlist, isInWatchlist } = useWatchlist();
 
     useEffect(() => {

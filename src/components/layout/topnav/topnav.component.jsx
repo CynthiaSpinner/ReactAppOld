@@ -1,3 +1,4 @@
+// imports react and required components
 import React from 'react';
 import reactlogo from "../../../assets/logo.svg";
 import tclogo from "../../../assets/TCLogoOnly.png";
@@ -6,6 +7,7 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 
+// top navigation component with modern styling and responsive design
 function TopNav() {
     return (
         <Navbar 
@@ -18,6 +20,7 @@ function TopNav() {
             }}
         >
             <Container>
+                {/* left side brand logo and title */}
                 <Navbar.Brand href="/" className="d-flex align-items-center">
                     <img
                         alt="TrueCoders"
@@ -31,13 +34,16 @@ function TopNav() {
                     </span>
                 </Navbar.Brand>
                 
+                {/* mobile menu toggle button */}
                 <Navbar.Toggle 
                     aria-controls="basic-navbar-nav" 
                     style={{ borderColor: 'var(--react-blue)' }}
                 />
                 
+                {/* collapsible navigation menu */}
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
+                        {/* home page navigation link */}
                         <NavLink 
                             className="nav-link modern-nav-link" 
                             to="/"
@@ -51,6 +57,7 @@ function TopNav() {
                         >
                             <i className="me-2">🏠</i>Home
                         </NavLink>
+                        {/* films page navigation link */}
                         <NavLink 
                             className="nav-link modern-nav-link" 
                             to="/films"
@@ -66,6 +73,7 @@ function TopNav() {
                         </NavLink>
                     </Nav>
                     
+                    {/* right side react branding */}
                     <Navbar.Brand className="d-flex align-items-center">
                         <span className="me-2" style={{ color: 'white', fontSize: '1rem' }}>
                             Powered by React

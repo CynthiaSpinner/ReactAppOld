@@ -1,17 +1,23 @@
+/* loader component styles with spinning animation */
+
+/* main loader container with continuous rotation */
 .loader {
     animation: rotate 2s linear infinite;
 }
 
+/* keyframe animation for full rotation */
 @keyframes rotate {
     100% {
         transform: rotate(36deg);        
     }
 }
 
+/* loader circle with dash animation effect */
 .loader circle {
     animation: dash 1.5s ease-in-out infinite;
 }
 
+/* keyframe animation for stroke dash effect */
 @keyframes dash {
     0% {
         stroke-dasharray: 1, 150;

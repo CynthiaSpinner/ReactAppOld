@@ -1,6 +1,8 @@
+// imports react and loader styles
 import React from 'react';
 import '../../../styles/loader.css';
 
+// reusable loading spinner component with customizable size
 function Loader({ size = 24 }) {
     return (
         <svg
@@ -15,6 +17,7 @@ function Loader({ size = 24 }) {
             strokeLinecap="round"
             strokelinejoin="round"
         >
+            {/* animated circle that creates spinning effect */}
             <circle cx="12" cy="12" r="10" />
         </svg>
     );

@@ -1,18 +1,23 @@
+/* app-specific styles for the main app component */
+
 .App {
   text-align: center;
 }
 
+/* react logo with responsive sizing and accessibility considerations */
 .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
 
+/* respects user's motion preferences for accessibility */
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
 }
 
+/* main app header with full viewport height and flexbox centering */
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -28,6 +33,7 @@
   color: #61dafb;
 }
 
+/* keyframe animation for logo spinning effect */
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

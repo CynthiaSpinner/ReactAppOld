@@ -1,16 +1,19 @@
+// imports react and required components
 import React from 'react';
 import { MainLayout } from '../components';
 import { Card, Button, Badge, Container, Row, Col } from 'react-bootstrap';
 import { useWatchlist } from '../contexts/WatchlistContext';
 import { Link } from 'react-router-dom';
 
+// home page component that displays user's watchlist
 function HomePage() {
+  // gets watchlist state and remove function from context
   const { watchlist, removeFromWatchlist } = useWatchlist();
   
   return (
     <MainLayout>
       <Container fluid className="px-0">
-        {/* Hero Section */}
+        {/* hero section with gradient background */}
         <div className="text-center mb-5 py-5" style={{
           background: 'var(--gradient-secondary)',
           color: 'white',
@@ -23,8 +26,9 @@ function HomePage() {
           </p>
         </div>
 
-        {/* Watchlist Content */}
+        {/* main content area */}
         <div className="px-3">
+          {/* renders empty state if no films in watchlist */}
           {watchlist.length === 0 ? (
             <Card className="modern-card text-center py-5">
               <Card.Body>

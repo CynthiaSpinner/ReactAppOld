@@ -1,18 +1,23 @@
+// imports react and required components
 import React from 'react';
 import { Card, Badge, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useWatchlist } from '../../../contexts/WatchlistContext';
 import '../../../styles/filmCard.css';
 
+// film card component that displays individual film information
 function FilmCard({ film, showAddButton = false, variant = 'default' }) {
+  // gets watchlist functions from context
   const { addToWatchlist, isInWatchlist } = useWatchlist();
   
+  // handles adding film to watchlist with event prevention
   const handleAddToWatchlist = (e) => {
     e.preventDefault();
     e.stopPropagation();
     addToWatchlist(film);
   };
 
+  // checks if film is already in watchlist
   const isInWatchlistFlag = isInWatchlist(film.id);
 
   return (

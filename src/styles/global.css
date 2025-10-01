@@ -1,8 +1,9 @@
-/* src/global.css */
+/* global styles for the entire application */
 
+/* imports bootstrap css framework */
 @import url(../../node_modules/bootstrap/dist/css/bootstrap.css);
 
-/* CSS Custom Properties - Color Palette */
+/* css custom properties - color palette and design tokens */
 :root {
   /* React Blue Palette */
   --react-blue: #61DAFB;
