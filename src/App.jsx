@@ -4,7 +4,7 @@ import { WatchlistProvider } from './contexts/WatchlistContext';
 import HomePage from './pages/HomePage';
 import FilmsPage from './pages/FilmsPage';
 import SingleFilmPage from './pages/SingleFilmPage';
-import './App.css';
+import './styles/App.css';
 
 function App() {
   return (

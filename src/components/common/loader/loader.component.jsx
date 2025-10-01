@@ -1,5 +1,5 @@
 import React from 'react';
-import './loader.css';
+import '../../../styles/loader.css';
 
 function Loader({ size = 24 }) {
     return (
